@@ -907,7 +907,7 @@
     </div>
 
     <div class="container">
-        <h1>sucre nail.<br>島尻予約フォーム
+        <h1>sucre nail.<br>佐藤予約フォーム
         </h1>
         <div class="label">お客様名<span class="required">必須</span></div>
         <input type="text" id="name" placeholder="お名前を入力してください" oninput="saveInput('name')">
@@ -920,6 +920,7 @@
         <div class="menu-sections">
             <button type="button" onclick="showMenu('male')">ハンドネイル</button>
             <button type="button" onclick="showMenu('female')">フットネイル</button>
+            <button type="button" onclick="showMenu('whitening')">スカルプチュア(10本長さ出し)</button>
         </div>
 
         <!-- メニュー表示エリア（選択されたメニュー名がここに出る） -->
@@ -962,6 +963,23 @@
                 <button type="button" id="firstirradiations" onclick="selectirradiations(this)" data-price="15000">オフあり(+15分)</button>
                 <button type="button" id="repeatirradiations" onclick="selectirradiations(this)" data-price="15000">オフなし</button>
                 <button type="button" id="sanirradiations" onclick="selectirradiations(this)" data-price="15000">アートあり(+10分)</button>
+            </div>
+        </div>
+
+        <div id="whitening" class="menu-section">
+            <div class="highlight-background">
+                <span class="highlight-text">◆スカルプチュア(10本長さ出し)◆</span>
+            </div>
+            <div class="symptoms">
+                <button type="button" onclick="selectSymptom(this, 'treatment8')" data-category="スカルプチュア(10本長さ出し)" data-price="15000">10本長さ出し</button>
+                <button type="button" onclick="selectSymptom(this, 'treatment9')" data-category="スカルプチュア(10本長さ出し)" data-price="15000">10本長さ出し＋ジェルコート</button>
+            </div>
+            <div class="highlight-background">
+                <span class="highlight-text">オプション</span>
+            </div>
+            <div class="irradiations">
+                <button type="button" id="firstirradiations" onclick="selectirradiations(this)" data-price="15000">オフあり(+30分)</button>
+                <button type="button" id="repeatirradiations" onclick="selectirradiations(this)" data-price="15000">オフなし</button>
             </div>
         </div>
 
@@ -1055,6 +1073,7 @@
             'オフあり(+15分)': 15,
             'オフなし': 0,
             'アートあり(+10分)': 15,
+            'オフあり(+30分)': 30
         };
 
         let selectedirradiationsTime = 0; // 訪問回数で選択された時間
@@ -1067,6 +1086,8 @@
             'ボリュームアート': 140,
             'ベーシックコース': 90,
             'ケアコース': 120,
+            '10本長さ出し': 180,
+            '10本長さ出し＋ジェルコート': 210  
         };
 
         let selectedMenuTime = 0;
@@ -1563,8 +1584,7 @@
                 '09:30', '10:00', '10:30', '11:00', '11:30',
                 '12:00', '12:30', '13:00', '13:30',
                 '14:00', '14:30', '15:00', '15:30',
-                '16:00', '16:30', '17:00', '17:30',
-                '18:00', '18:30', '19:00', '19:30'
+                '16:00', '16:30', '17:00', '17:30'
             ];
 
             if (table.rows.length === 0) {
@@ -1619,19 +1639,19 @@
 
             // 営業時間の判定関数
             function isBusinessHours(slotStart, slotEnd, dayOfWeek, isHoliday) {
-                const hour = slotStart.getHours();
-                const minute = slotStart.getMinutes();
-                const timeInMinutes = hour * 60 + minute;
-
-                // 木曜日は定休日
+                // 木曜日（dayOfWeek === 4）は定休日
                 if (dayOfWeek === 4) {
                     return false;
                 }
 
-                // 平日（月曜日～金曜日、木曜日除く）かつ祝日でない場合：17:30~19:30
+                const hour = slotStart.getHours();
+                const minute = slotStart.getMinutes();
+                const timeInMinutes = hour * 60 + minute;
+
+                // 平日（月曜日～金曜日、木曜日除く）かつ祝日でない場合：9:30~17:30
                 if (dayOfWeek >= 1 && dayOfWeek <= 5 && !isHoliday) {
-                    const startTime = 17 * 60 + 30;  // 17:30
-                    const endTime = 19 * 60 + 30;   // 19:30
+                    const startTime = 9 * 60 + 30;  // 9:30
+                    const endTime = 17 * 60 + 30;   // 17:30
                     
                     // 開始時間のみをチェック（終了時間は営業時間を超過してもOK）
                     return timeInMinutes >= startTime && timeInMinutes <= endTime;
