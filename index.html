@@ -932,17 +932,17 @@
                 <span class="highlight-text">◆ハンドネイル◆</span>
             </div>
             <div class="symptoms">
-                <button type="button" onclick="selectSymptom(this, 'treatment1')" data-category="ハンドネイル" data-price="15000">ケアのみ</button>
-                <button type="button" onclick="selectSymptom(this, 'treatment2')" data-category="ハンドネイル" data-price="15000">クリアジェル</button>
-                <button type="button" onclick="selectSymptom(this, 'treatment3')" data-category="ハンドネイル" data-price="15000">ワンカラー</button>
-                <button type="button" onclick="selectSymptom(this, 'treatment4')" data-category="ハンドネイル" data-price="15000">シンプルアート</button>
-                <button type="button" onclick="selectSymptom(this, 'treatment5')" data-category="ハンドネイル" data-price="15000">ボリュームアート</button>
+                <button type="button" onclick="selectSymptom(this, 'treatment1')" data-category="ハンドネイル" data-price="15000">ケアのみ(35分)</button>
+                <button type="button" onclick="selectSymptom(this, 'treatment2')" data-category="ハンドネイル" data-price="15000">クリアジェル(40分)</button>
+                <button type="button" onclick="selectSymptom(this, 'treatment3')" data-category="ハンドネイル" data-price="15000">ワンカラー(60分)</button>
+                <button type="button" onclick="selectSymptom(this, 'treatment4')" data-category="ハンドネイル" data-price="15000">シンプルアート(70分)</button>
+                <button type="button" onclick="selectSymptom(this, 'treatment5')" data-category="ハンドネイル" data-price="15000">ボリュームアート(120分)</button>
             </div>
             <div class="highlight-background">
                 <span class="highlight-text">オプション</span>
             </div>
             <div class="irradiations">
-                <button type="button" id="firstirradiations" onclick="selectirradiations(this)" data-price="15000">オフあり(+15分)</button>
+                <button type="button" id="firstirradiations" onclick="selectirradiations(this)" data-price="15000">オフあり(15分)</button>
                 <button type="button" id="repeatirradiations" onclick="selectirradiations(this)" data-price="15000">オフなし</button>
             </div>
         </div>
@@ -952,16 +952,16 @@
                 <span class="highlight-text">◆フットネイル◆</span>
             </div>
             <div class="symptoms">
-                <button type="button" onclick="selectSymptom(this, 'treatment6')" data-category="フットネイル" data-price="15000">ベーシックコース</button>
-                <button type="button" onclick="selectSymptom(this, 'treatment7')" data-category="フットネイル" data-price="15000">ケアコース</button>
+                <button type="button" onclick="selectSymptom(this, 'treatment6')" data-category="フットネイル" data-price="15000">ベーシックコース(90分)</button>
+                <button type="button" onclick="selectSymptom(this, 'treatment7')" data-category="フットネイル" data-price="15000">ケアコース(110分)</button>
             </div>
             <div class="highlight-background">
                 <span class="highlight-text">オプション</span>
             </div>
             <div class="irradiations">
-                <button type="button" id="firstirradiations" onclick="selectirradiations(this)" data-price="15000">オフあり(+15分)</button>
-                <button type="button" id="repeatirradiations" onclick="selectirradiations(this)" data-price="15000">オフなし</button>
-                <button type="button" id="sanirradiations" onclick="selectirradiations(this)" data-price="15000">アートあり(+10分)</button>
+                <button type="button" id="firstirradiations" onclick="selectirradiations(this)" data-price="15000">オフあり(15分)</button>
+                <button type="button" id="repeatirradiations" onclick="selectirradiations(this)" data-price="15000">オフなし</button>                
+                <button type="button" id="sanirradiations" onclick="selectirradiations(this)" data-price="15000">アートあり(15分)</button>
             </div>
         </div>
 
@@ -1052,21 +1052,21 @@
 
         // 訪問回数ごとの時間設定 (例：初めて=20分、2回目以降=15分)
         let irradiationsTimes = {
-            'オフあり(+15分)': 15,
+            'オフあり(15分)': 20,
             'オフなし': 0,
-            'アートあり(+10分)': 15,
+            'アートあり(15分)': 20,
         };
 
         let selectedirradiationsTime = 0; // 訪問回数で選択された時間
 
         let menuTimes = {
-            'ケアのみ': 45,
-            'クリアジェル': 50,
-            'ワンカラー': 95,
-            'シンプルアート': 120,
-            'ボリュームアート': 140,
-            'ベーシックコース': 90,
-            'ケアコース': 120,
+            'ケアのみ(35分)': 45,
+            'クリアジェル(40分)': 50,
+            'ワンカラー(60分)': 70,
+            'シンプルアート(70分)': 80,
+            'ボリュームアート(120分)': 130,
+            'ベーシックコース(90分)': 100,
+            'ケアコース(110分)': 120,
         };
 
         let selectedMenuTime = 0;
